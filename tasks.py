@@ -21,4 +21,3 @@ def build(c):
     c.run('python3 -m compileall src/*.py -b')
     c.run('mkdir build')
     c.run('mv src/*.pyc build')
-    c.run('mv src/__pycache__ build')
