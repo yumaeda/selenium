@@ -25,7 +25,7 @@ class Page():
         if element is None:
             element = self.get_element_by_class_name(id_or_class)
         if element is None:
-            print u'[' + id_or_class + u']にスクロールする事ができませんでした。'
+            print(u'[' + id_or_class + u']にスクロールする事ができませんでした。')
         else:
             actions = ActionChains(self.driver)
             actions.move_to_element(element).perform()
