@@ -2,8 +2,14 @@
 
 ### 必要なモジュールをインストールする。 
 ```bash
-pip install invoke
-pip install pylint
+brew update
+brew install python
+sudo easy_install pip
+sudo easy_install six
+sudo pip install --user matplotlib
+sudo pip install --user selenium
+sudo pip install --user invoke
+sudo pip install --user pylint
 ```
 
 ### Task Runnerを実行する。
