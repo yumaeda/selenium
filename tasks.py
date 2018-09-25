@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Pythonのタスクランナー"""
 
 from invoke import task
