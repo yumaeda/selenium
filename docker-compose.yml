@@ -14,7 +14,7 @@ services:
             - HUB_HOST=selenium-hub
             - HUB_PORT=4444
     python:
-        build: ./build/python3
+        build: ./docker-build/python3
         container_name: 'python'
         depends_on:
             - selenium-hub

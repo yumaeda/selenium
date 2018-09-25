@@ -1,9 +1,17 @@
 # Selenium用のPythonモジュール
 
-### srcディレクトリのパイソンのソースをコンパイルする。 
+### 必要なモジュールをインストールする。 
 ```bash
-python -m src/compileall .
+pip install invoke
+pip install pylint
 ```
+
+### Task Runnerを実行する。
+```bash
+invoke clean build
+```
+
+# Docker
 
 ### Selenium & Python & ChromeのDockerコンテナを起動する。
 ```bash
