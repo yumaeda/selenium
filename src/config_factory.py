@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """設定情報を作成するクラス"""
 
 import configparser

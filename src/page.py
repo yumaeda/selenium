@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Htmlページ関連の処理を提供する"""
 
 from selenium.common.exceptions import TimeoutException
