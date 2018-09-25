@@ -10,7 +10,7 @@ python -m src/compileall .
 docker-compose up -d --build
 ```
 
-```bash
 ### `$HOME/selenium` 直下のdemo.pyを実行する。
+```bash
 docker exec -it python python /root/script/demo.py
 ```
