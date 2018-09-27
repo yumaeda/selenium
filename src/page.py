@@ -15,10 +15,19 @@ class Page():
         """Pageクラスのコンストラクタ"""
         self.driver = driver
 
+    def click_with_key_down(self, element, key):
+        """指定されたキーを押した状態で指定された要素をクリックする
+
+        :rtype: selenium.webdriver.remote.webelement.WebElement element
+        :rtype: string key
+        """
+        actions = ActionChains(self.driver)
+        actions.key_down(key).click(element).key_up(key).perform()
+
     def scroll_to_element(self, id_or_class):
         """IDもしくはクラスで指定された要素までスクロールする
 
-        :rtype: selenium.webdriver.remote.webelement.WebElement element
+        :rtype: string id_or_class
         """
         element = self.get_element_by_id(id_or_class)
         if element is None:
