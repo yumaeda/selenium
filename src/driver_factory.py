@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Docker用のChromeドライバーを作成するクラス"""
 
 from selenium import webdriver
