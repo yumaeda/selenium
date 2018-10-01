@@ -2,7 +2,7 @@
 
 ### Clone yumaeda-python repository.
 ```bash
-git clone https://github.com/yumaeda/selenium.git $HOME/selenium
+git clone https://github.com/yumaeda/yumaeda-python.git $HOME/yumaeda-python
 ```
 
 ### Install Packages.
@@ -19,7 +19,7 @@ sudo pip install --user pylint
 
 ### Execute Task Runner.
 ```bash
-cd $HOME/selenium
+cd $HOME/yumaeda-python
 invoke clean build
 ```
 
@@ -27,11 +27,11 @@ invoke clean build
 
 ### Launch Docker Container.
 ```bash
-cd $HOME/selenium
+cd $HOME/yumaeda-python
 docker-compose up -d --build
 ```
 
-### Execute demo.py under `$HOME/selenium`.
+### Execute demo.py under `$HOME/yumaeda-python`.
 ```bash
 docker exec -it python python /root/script/demo.py
 ```
