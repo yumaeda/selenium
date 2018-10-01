@@ -1,9 +1,9 @@
-"""基本認証に必要なクレデンシャルを送信するクラス"""
+"""Send credentials to Basic Authentication."""
 
 class BasicAuth():
-    """BasicAuthクラス"""
+    """BasicAuth Class"""
     def __init__(self, driver, hosts, is_ssl=True):
-        """BasicAuthのコンストラクタ
+        """Constructor for BasicAuth class
 
         :rtype: selenium.webdriver driver
         :rtype: array hosts
@@ -16,7 +16,7 @@ class BasicAuth():
         self.pwd = ''
 
     def send_credentials(self, login, pwd):
-        """認証が必要なホストにユーザー名とパスワード付きのURLでアクセスする
+        """Send credentials, which is as part of URL, to the host.
 
         :rtype: string login
         :rtype: string pwd

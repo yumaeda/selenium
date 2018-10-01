@@ -1,15 +1,15 @@
-"""設定情報を作成するクラス"""
+"""Create configuration"""
 
 import configparser
 
 class ConfigFactory():
-    """ConfigFactoryクラス"""
+    """ConfigFactory Class"""
     def __init__(self, config_file):
-        """ConfigFactoryのコンストラクタ"""
+        """Constructor for ConfigFactory class"""
         self.config_file = config_file
 
     def create(self):
-        """設定を取得する"""
+        """Read the configuration file and create a configuration object"""
         config = configparser.RawConfigParser(allow_no_value=True)
         config.read_file(open(self.config_file))
         return config

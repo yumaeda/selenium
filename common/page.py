@@ -1,4 +1,4 @@
-"""Htmlページ関連の処理を提供する"""
+"""Provides functions related to Html page."""
 
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
@@ -6,55 +6,67 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-# 定数を定義
+# CONSTANTS
 WAIT_TIME = 3
 
 class Page():
-    """Pageクラス"""
+    """Page class"""
     def __init__(self, driver):
-        """Pageクラスのコンストラクタ"""
+        """Constructor of Page class"""
         self.driver = driver
 
-    def scroll_to_element(self, id_or_class):
-        """IDもしくはクラスで指定された要素までスクロールする
+    def click_with_key_down(self, element, key):
+        """Click the element while pressing the specified button.
 
         :rtype: selenium.webdriver.remote.webelement.WebElement element
+        :rtype: string key
+        """
+        actions = ActionChains(self.driver)
+        actions.key_down(key).click(element).key_up(key).perform()
+
+    def scroll_to_element(self, id_or_class):
+        """Scroll to the element specified by the selector.
+
+        :rtype: string id_or_class
         """
         element = self.get_element_by_id(id_or_class)
         if element is None:
             element = self.get_element_by_class_name(id_or_class)
         if element is None:
-            print('[' + id_or_class + ']にスクロールする事ができませんでした。')
+            print('Cannot scroll to [' + id_or_class + '].')
         else:
             actions = ActionChains(self.driver)
             actions.move_to_element(element).perform()
         return element
 
-    def focus_on_tab(self, index=-1):
-        """指定のタブにフォーカスを当てる
+    def activate_tab(self, index=-1):
+        """Activate the window tab, which is specified by index.
 
-        indexが指定されていない場合は、最後のタブにフォーカスを当てる
+        If index is not specified, activate the last tab.
 
         :rtype: number index
         """
-        tab_index = index
-        if index == -1:
-            tab_index = len(self.driver.window_handles) - 1
-
-        target_tab = self.driver.window_handles[tab_index]
+        target_tab = self.driver.window_handles[index]
         self.driver.switch_to.window(target_tab)
 
-    def force_click(self, element):
-        """JavaScript経由で指定の要素をクリックする。
+    def close_inactive_tabs(self):
+        """Close all the window tabs, which are not active."""
+        while len(self.driver.window_handles) > 1:
+            self.activate_tab(1)
+            self.driver.close()
+            self.activate_tab()
 
-        element.is_displayed()がFalseの要素でもクリックできる。
+    def force_click(self, element):
+        """Click the element via JavaScript.
+
+        It is possible to click an element even when element.is_displayed() is False.
         """
         self.driver.execute_script('$(arguments[0]).click();', element)
 
     def get_element(self, selected_by, value):
-        """指定された要素を取得する。
+        """Get the element by the specified selector.
 
-        ロードが終わるまで待ってから、要素を取得する。
+        Wait until the element is fully loaded.
 
         :rtype: selenium.webdriver.remote.webelement.WebElement element
         """
@@ -65,9 +77,9 @@ class Page():
             return None
 
     def get_elements(self, selected_by, value):
-        """指定された要素を全て取得する。
+        """Get all the elements by the specified selector.
 
-        ロードが終わるまで待ってから、要素を取得する。
+        Wait until the elements are fully loaded.
 
         :rtype: selenium.webdriver.remote.webelement.WebElement element
         """
@@ -78,27 +90,27 @@ class Page():
             return None
 
     def get_element_by_id(self, element_id):
-        """指定されたIDの要素を取得する。
+        """Get the element specified by id.
 
-        ロードが終わるまで待ってから、要素を取得する。
+        Wait until the element is fully loaded.
 
         :rtype: selenium.webdriver.remote.webelement.WebElement element
         """
         return self.get_element(By.ID, element_id)
 
     def get_element_by_class_name(self, class_name):
-        """指定されたクラスの要素を取得する。
+        """Get the element specified by class name.
 
-        ロードが終わるまで待ってから、要素を取得する。
+        Wait until the element is fully loaded.
 
         :rtype: selenium.webdriver.remote.webelement.WebElement element
         """
         return self.get_element(By.CLASS_NAME, class_name)
 
     def get_elements_by_class_name(self, class_name):
-        """指定されたクラスの要素を全て取得する。
+        """Get all the elements specified by class name.
 
-        ロードが終わるまで待ってから、要素を取得する。
+        Wait until the elements are fully loaded.
 
         :rtype: selenium.webdriver.remote.webelement.WebElement element
         """
