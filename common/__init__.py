@@ -1,4 +1,4 @@
-"""import *の設定ファイル"""
+"""Setting file for import *"""
 
 __all__ = [
     'driver_factory',
