@@ -1,11 +1,11 @@
-# Selenium用のPythonモジュール
+# Repository for Python Modules
 
-### Git Cloneを実行する。
+### Clone yumaeda-python repository.
 ```bash
 git clone https://github.com/yumaeda/selenium.git $HOME/selenium
 ```
 
-### 必要なモジュールをインストールする。 
+### Install Packages.
 ```bash
 brew update
 brew install python
@@ -17,7 +17,7 @@ sudo pip install --user invoke
 sudo pip install --user pylint
 ```
 
-### Task Runnerを実行する。
+### Execute Task Runner.
 ```bash
 cd $HOME/selenium
 invoke clean build
@@ -25,13 +25,13 @@ invoke clean build
 
 # Docker
 
-### Selenium & Python & ChromeのDockerコンテナを起動する。
+### Launch Docker Container.
 ```bash
 cd $HOME/selenium
 docker-compose up -d --build
 ```
 
-### `$HOME/selenium` 直下のdemo.pyを実行する。
+### Execute demo.py under `$HOME/selenium`.
 ```bash
 docker exec -it python python /root/script/demo.py
 ```
