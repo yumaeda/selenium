@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name='selenium-unittest-common',
-    version='1.0.2',
+    version='1.0.3',
     author='Yukitaka Maeda',
     author_email='yumaeda@gmail.com',
     description='Python modules for selenium unit test',

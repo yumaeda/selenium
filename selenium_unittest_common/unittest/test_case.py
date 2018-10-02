@@ -2,8 +2,8 @@
 
 import os
 import unittest
-from yumaeda.common import driver_factory
-from yumaeda.common import page as html_page
+from selenium_unittest_common.common import driver_factory
+from selenium_unittest_common.common import page as html_page
 
 # CONSTANTS
 DRIVER_FACTORY = driver_factory.DriverFactory()
@@ -39,6 +39,7 @@ class BaseTestCase(unittest.TestCase):
         """
         if exc_list and exc_list[-1][0] is self:
             return exc_list[-1][1]
+        return False
 
     def shortDescription(self):
         """Do not show function comment upon running test cases"""
