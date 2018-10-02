@@ -1,37 +1,52 @@
-# Repository for Python Modules
+# Python Modules for Selenium UnitTest
 
-### Clone yumaeda-python repository.
+### Installation
 ```bash
-git clone https://github.com/yumaeda/yumaeda-python.git $HOME/yumaeda-python
+pip install selenium-unittest-common
 ```
 
-### Install Packages.
-```bash
-brew update
-brew install python
-sudo easy_install pip
-sudo easy_install six
-sudo pip install --user matplotlib
-sudo pip install --user selenium
-sudo pip install --user invoke
-sudo pip install --user pylint
+### Usage
+```python
+from selenium_unittest_common.unittest import test_case
+
+class SampleTestCase(test_case.BaseTestCase):
+    @classmethod
+    def setUpClass(cls):
+        super(SampleTestCase, cls).setUpClass()
+        cls.base_url = 'https://www.google.com'
+        cls.page_url = cls.base_url
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.close()
+        cls.driver.quit()
+
+    def setUp(self):
+        super(SampleTestCase, self).setUp()
+        self.driver.get(self.page_url)
 ```
 
-### Execute Task Runner.
+### Build & Pylint
+1. Make sure below modules are installed:
+* invoke
+* pylint
+
+2. Execute the following command
 ```bash
-cd $HOME/yumaeda-python
 invoke clean build
 ```
 
-# Docker
+### Docker
 
-### Launch Docker Container.
+#### Launching Container
 ```bash
-cd $HOME/yumaeda-python
 docker-compose up -d --build
 ```
 
-### Execute demo.py under `$HOME/yumaeda-python`.
+#### Executing Python Script
 ```bash
-docker exec -it python python /root/script/demo.py
+docker exec -it python python /root/script/sample.py
 ```
+
+### TODO
+* Add support for FireFox. 

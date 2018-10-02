@@ -16,7 +16,8 @@ def clean(c, bytecode=False, extra=''):
 @task
 def build(c):
     """ビルド＆Linting処理"""
-    c.run('pylint common/*.py')
-    c.run('python3 -m compileall common/*.py -b')
+    c.run('pylint ./selenium_unittest_common/**/*.py')
+    c.run('python3 -m compileall ./selenium_unittest_common/**/*.py -b')
     c.run('mkdir build')
-    c.run('mv common/*.pyc build')
+    c.run('mv ./selenium_unittest_common/common/*.pyc build')
+    c.run('mv ./selenium_unittest_common/unittest/*.pyc build')
