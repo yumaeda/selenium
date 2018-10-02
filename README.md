@@ -7,7 +7,7 @@ pip install selenium-unittest-common
 
 ### Usage
 ```python
-from selenium_unittest_common import test_case
+from selenium_unittest_common.unittest import test_case
 
 class SampleTestCase(test_case.BaseTestCase):
     @classmethod
